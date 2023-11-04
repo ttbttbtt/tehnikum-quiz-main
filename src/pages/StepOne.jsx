@@ -1,10 +1,22 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Inditext } from "../components/indiText";
 import { Heading } from "../components/heading";
 import { Button } from "../components/button";
 import { Input2 } from "../components/input2";
 
 const StepOne = () => {
+
+  const [answerValue, setAnswerValue] = useState("")
+  const [answerError, setAnswerError] = useState(false)
+
+  useEffect(() => {
+    if (!answerValue) {
+      setAnswerError(true)
+    } else {
+      setAnswerError(false)
+    }
+  },[answerValue])
+
   return (
     <div className="container">
       <div className="wrapper">
@@ -61,6 +73,9 @@ const StepOne = () => {
               </span>
             </label> */}
             <Input2
+              hasError={answerError}
+              value={answerValue}
+              onChange={setAnswerValue}
               isRequired
               name="answer"
               inputPlaceholder="Ваш ответ"
