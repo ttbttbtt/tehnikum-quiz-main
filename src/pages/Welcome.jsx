@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, {
+                useEffect, // fix: вывод ошибки при: нажатии на кнопку - в коммент!
+                useState
+              } from "react";
 import { Heading } from "../components/heading"
 import { Button } from "../components/button";
 import { Input } from "../components/input";
@@ -10,26 +13,36 @@ const Welcome = () => {
   const [nameError, setNameError] = useState(false)
   const [phoneError, setPhoneError] = useState(false)
 
-  // useEffect(() => {
-  //   console.log('nameValue:', nameValue)
-  //   console.log('phoneValue:', phoneValue)
-  // }, [nameValue,phoneValue])
 
-  useEffect(() => {
+  // вывод ошибки при: нажатии на кнопку
+  // const clickHandler = () => {
+  //   if (!nameValue) {
+  //     setNameError(true)
+  //   } else {
+  //     setNameError(false)
+  //   }
+
+  //   if (!phoneValue) {
+  //     setPhoneError(true)
+  //   } else {
+  //     setPhoneError(false)
+  //   }
+  // }
+
+
+  // вывод ошибки при: изменении Имени или Телефона
+  useEffect(() => { // console.log('nameValue:', nameValue)
     if (!nameValue) {
       setNameError(true)
     } else {
       setNameError(false)
     }
-  },[nameValue])
-
-  useEffect(() => {
-    if (!phoneValue) {
+    if (!phoneValue) { // console.log('phoneValue:', phoneValue)
       setPhoneError(true)
     } else {
       setPhoneError(false)
     }
-  },[phoneValue])
+  },[nameValue, phoneValue])
 
   return (
     <div className="container">
@@ -64,7 +77,10 @@ const Welcome = () => {
                 errorMessage="Введите номер в правильном формате"
             />
 
-            <Button buttonType="button" buttonText="Далее" />
+            <Button
+              // onClick={clickHandler} // вывод ошибки при: нажатии на кнопку
+              buttonType="button"
+              buttonText="Далее" />
 
           </form>
         </div>
