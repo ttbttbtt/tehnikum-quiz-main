@@ -1,5 +1,5 @@
 import React, {
-                useEffect, // fix: вывод ошибки при: нажатии на кнопку - в коммент!
+                // useEffect, // fix: вывод ошибки при: нажатии на кнопку - в коммент!
                 useState
               } from "react";
 import { Heading } from "../components/heading"
@@ -15,34 +15,34 @@ const Welcome = () => {
 
 
   // вывод ошибки при: нажатии на кнопку
-  // const clickHandler = () => {
-  //   if (!nameValue) {
-  //     setNameError(true)
-  //   } else {
-  //     setNameError(false)
-  //   }
-
-  //   if (!phoneValue) {
-  //     setPhoneError(true)
-  //   } else {
-  //     setPhoneError(false)
-  //   }
-  // }
-
-
-  // вывод ошибки при: изменении Имени или Телефона
-  useEffect(() => { // console.log('nameValue:', nameValue)
+  const clickHandler = () => {
     if (!nameValue) {
       setNameError(true)
     } else {
       setNameError(false)
     }
-    if (!phoneValue) { // console.log('phoneValue:', phoneValue)
+
+    if (!phoneValue) {
       setPhoneError(true)
     } else {
       setPhoneError(false)
     }
-  },[nameValue, phoneValue])
+  }
+
+
+  // вывод ошибки при: изменении Имени или Телефона
+  // useEffect(() => { // console.log('nameValue:', nameValue)
+  //   if (!nameValue) {
+  //     setNameError(true)
+  //   } else {
+  //     setNameError(false)
+  //   }
+  //   if (!phoneValue) { // console.log('phoneValue:', phoneValue)
+  //     setPhoneError(true)
+  //   } else {
+  //     setPhoneError(false)
+  //   }
+  // },[nameValue, phoneValue])
 
   return (
     <div className="container">
@@ -78,9 +78,10 @@ const Welcome = () => {
             />
 
             <Button
-              // onClick={clickHandler} // вывод ошибки при: нажатии на кнопку
+              onClick={clickHandler} // вывод ошибки при: нажатии на кнопку
               buttonType="button"
-              buttonText="Далее" />
+              // buttonText="Далее"
+            />
 
           </form>
         </div>
