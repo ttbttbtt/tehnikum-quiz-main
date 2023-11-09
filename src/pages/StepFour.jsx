@@ -9,24 +9,19 @@ const StepFour = () => {
   console.log("useState: ", checkedAnswer)
 
   const variants = [
-    {
-      id: "variant-1",
+    { id: "variant-1",
       answerLabel: "1",
     },
-    {
-      id: "variant-2",
+    { id: "variant-2",
       answerLabel: "2",
     },
-    {
-      id: "variant-3",
+    { id: "variant-3",
       answerLabel: "3",
     },
-    {
-      id: "variant-4",
+    { id: "variant-4",
       answerLabel: "4",
     },
-    {
-      id: "variant-5",
+    { id: "variant-5",
       answerLabel: "5",
     },
   ]
@@ -39,7 +34,6 @@ const StepFour = () => {
     <div className="container">
       <div className="wrapper">
         <div className="emoji-quiz">
-
           <ProgressBar currentStep={4}/>
 
           <div className="question">
@@ -50,7 +44,6 @@ const StepFour = () => {
             />
 
             <ul className="level-variants">
-
               {/* <li className="variant-wrapper">
                 <input required type="radio" name="variant" id="variant-1" />
                 <label htmlFor="variant-1">1</label>
@@ -73,7 +66,6 @@ const StepFour = () => {
 
             </ul>
 
-            {/* <button id="next-btn" disabled>Далее</button> */}
             <LinkButton
               path="/thanks"
               isDisabled={!checkedAnswer}

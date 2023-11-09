@@ -9,20 +9,16 @@ const StepTwo = () => {
   console.log("useState: ", checkedAnswer)
 
   const variants = [
-    {
-      id: "variant-1",
+    { id: "variant-1",
       answerLabel: "Ответ №1",
     },
-    {
-      id: "variant-2",
+    { id: "variant-2",
       answerLabel: "Ответ №2",
     },
-    {
-      id: "variant-3",
+    { id: "variant-3",
       answerLabel: "Ответ №3",
     },
-    {
-      id: "variant-4",
+    { id: "variant-4",
       answerLabel: "Ответ №4",
     },
   ]
@@ -35,7 +31,6 @@ const StepTwo = () => {
     <div className="container">
       <div className="wrapper">
         <div className="variants-quiz">
-
           <ProgressBar currentStep={2}/>
 
           <div className="question">
@@ -46,7 +41,6 @@ const StepTwo = () => {
             />
 
             <ul className="variants">
-
               {/* <li className="variant-wrapper">
                 <input required type="radio" name="variant" id="variant-1" />
                 <label htmlFor="variant-1">Ваш ответ</label>
@@ -69,7 +63,6 @@ const StepTwo = () => {
 
             </ul>
 
-            {/* <button disabled id="next-btn">Далее</button> */}
             <LinkButton
               path="/step-three"
               isDisabled={!checkedAnswer}

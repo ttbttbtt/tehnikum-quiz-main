@@ -46,7 +46,8 @@ function App() {
         <StepOne />
         <StepTwo />
         <StepThree />
-        <StepFour /> */}
+        <StepFour />
+        <Thanks /> */}
 
         <RouterProvider router={routerConfig} />
       </div>
