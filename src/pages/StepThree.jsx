@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ProgressBar } from "../components/ProgressBar";
 import { AnswerItem2 } from "../components/AnswerItem2";
+import { Heading } from "../components/heading";
+import { LinkButton } from "../components/LinkButton";
 
 const StepThree = () => {
   const [checkedAnswer, setCheckedAnswer] = useState(null)
@@ -46,25 +48,15 @@ const StepThree = () => {
       <div className="wrapper">
         <div className="emoji-quiz">
 
-          {/* <div className="indicator">
-            <div className="indicator__text">
-              <span className="indicator__description"
-                >Скидка за прохождение опроса:
-              </span>
-              <span className="indicator__value">15%</span>
-            </div>
-            <div className="indicator__progressbar">
-              <div className="indicator__unit indicator__unit-1 _active"></div>
-              <div className="indicator__unit indicator__unit-2 _active"></div>
-              <div className="indicator__unit indicator__unit-3"></div>
-              <div className="indicator__unit indicator__unit-4"></div>
-            </div>
-          </div> */}
-
-          <ProgressBar />
+          <ProgressBar currentStep={3}/>
 
           <div className="question">
-            <h2>3. Занимательный вопрос</h2>
+
+            <Heading
+              HeadingType='h2'
+              text="3. Занимательный вопрос"
+            />
+
             <ul className="emoji-variants">
 
               {/* <li className="variant-wrapper">
@@ -74,20 +66,7 @@ const StepThree = () => {
                   <p>Ваш ответ 1</p>
                 </label>
               </li>
-              <li className="variant-wrapper">
-                <input required type="radio" name="variant" id="variant-2" />
-                <label htmlFor="variant-2">
-                  <img src="./img/hearts.png" alt="hearts" />
-                  <p>Ваш ответ 2</p>
-                </label>
-              </li>
-              <li className="variant-wrapper">
-                <input required type="radio" name="variant" id="variant-3" />
-                <label htmlFor="variant-3">
-                  <img src="./img/smirk.png" alt="smirk" />
-                  <p>Ваш ответ 3</p>
-                </label>
-              </li>
+              ...
               <li className="variant-wrapper">
                 <input required type="radio" name="variant" id="variant-4" />
                 <label htmlFor="variant-4">
@@ -110,7 +89,15 @@ const StepThree = () => {
               ))}
 
             </ul>
-            <button disabled id="next-btn">Далее</button>
+
+            {/* <button disabled id="next-btn">Далее</button> */}
+            <LinkButton
+              path="/step-four"
+              isDisabled={!checkedAnswer}
+              id="next-btn"
+              type="button"
+              buttonText="Далее"
+            />
           </div>
         </div>
       </div>

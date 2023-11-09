@@ -1,12 +1,15 @@
 import React, {
-                // useEffect, // fix: вывод ошибки при: нажатии на кнопку - в коммент!
+                // useEffect, // вывод ошибки при: изменении Имени или Телефона
                 useState
               } from "react";
+import { useNavigate } from "react-router-dom";
 import { Heading } from "../components/heading"
-import { Button } from "../components/button";
+// import { Button } from "../components/button";
+import { LinkButton } from "../components/LinkButton";
 import { Input } from "../components/input";
 
 const Welcome = () => {
+  const navigate = useNavigate()
 
   const [nameValue, setNameValue] = useState("")
   const [phoneValue, setPhoneValue] = useState("")
@@ -14,19 +17,47 @@ const Welcome = () => {
   const [phoneError, setPhoneError] = useState(false)
 
 
-  // вывод ошибки при: нажатии на кнопку
-  const clickHandler = () => {
+  const goToNextPage = () => {
+    if (nameValue && phoneValue) {
+      navigate('/step-one') // переход на страницу step-one
+    }
+  }
+
+
+
+  const validateName = () => {
     if (!nameValue) {
       setNameError(true)
     } else {
       setNameError(false)
     }
+  }
 
+  const validatePhone = () => {
     if (!phoneValue) {
       setPhoneError(true)
     } else {
       setPhoneError(false)
     }
+  }
+
+  const handleNameInput = (value) => {
+    setNameValue(value)
+    validateName()
+  }
+
+  const handlePhoneInput = (value) => {
+    setPhoneValue(value)
+    validatePhone()
+  }
+
+
+
+  // вывод ошибки при: нажатии на кнопку
+  const clickHandler = () => {
+    validateName()
+    validatePhone()
+    goToNextPage()
   }
 
 
@@ -59,7 +90,8 @@ const Welcome = () => {
             <Input
                 hasError={nameError}
                 value={nameValue}
-                onChange={setNameValue}
+                // onChange={setNameValue}
+                onChange={(value) => handleNameInput(value)}
                 id="username"
                 isRequired
                 inputLabel="Ваше имя"
@@ -69,7 +101,8 @@ const Welcome = () => {
             <Input
                 hasError={phoneError}
                 value={phoneValue}
-                onChange={setPhoneValue}
+                // onChange={setPhoneValue}
+                onChange={(value) => handlePhoneInput(value)}
                 id="phone"
                 isRequired
                 inputLabel="Ваш номер"
@@ -77,10 +110,19 @@ const Welcome = () => {
                 errorMessage="Введите номер в правильном формате"
             />
 
-            <Button
+            {/* <Button
               onClick={clickHandler} // вывод ошибки при: нажатии на кнопку
               buttonType="button"
-              // buttonText="Далее"
+              buttonText="Далее"
+            /> */}
+
+            <LinkButton
+              path="/step-one"
+              // isDisabled={false}
+              isDisabled={!nameValue || !phoneValue}
+              type="button"
+              buttonText="Далее"
+              onClick={clickHandler}
             />
 
           </form>
