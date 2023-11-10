@@ -1,12 +1,14 @@
 import React, {
   // useEffect, // вывод ошибки при: изменении Имени или Телефона
   useState,
+  useContext
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { Heading } from "../components/heading";
 import { Button } from "../components/button";
 // import { LinkButton } from "../components/LinkButton";
 import { Input } from "../components/input";
+import { ThemeContext, themes } from "../contexts/themeContext";
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -15,6 +17,8 @@ const Welcome = () => {
   const [phoneValue, setPhoneValue] = useState("");
   const [nameError, setNameError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
+
+  const { theme, toggleTheme } = useContext(ThemeContext)
 
   const goToNextPage = () => {
     if (nameValue && phoneValue) {
@@ -70,9 +74,12 @@ const Welcome = () => {
   // },[nameValue, phoneValue])
 
   return (
-    <div className="container">
+    // <div className="container" style={{ backgroud: theme === themes.light && '#000'}}>
+    <div className={`container ${theme === themes.dark && '_dark'}`}>
       <div className="wrapper">
         <div className="welcome">
+
+          <button style={{ marginBottom: 16 }} type="button" onClick={toggleTheme}>Переключи тему</button>
           
           <Heading
             text="Добро пожаловать в квиз от лучшего учебного центра"
