@@ -10,6 +10,8 @@ import Thanks from "./pages/Thanks";
 
 import "./styles/main.css";
 import { ThemeProvider } from "./contexts/themeProvider";
+import { InfoProvider } from "./contexts/infoProvider";
+
 
 const routerConfig = createBrowserRouter([
   {
@@ -41,6 +43,7 @@ const routerConfig = createBrowserRouter([
 function App() {
   return (
     <ThemeProvider>
+    <InfoProvider>
       <div className="App">
         {/* <Welcome />
           <StepOne />
@@ -51,6 +54,7 @@ function App() {
 
         <RouterProvider router={routerConfig} />
       </div>
+    </InfoProvider>
     </ThemeProvider>
   );
 }

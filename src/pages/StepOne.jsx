@@ -1,18 +1,25 @@
 import React, {
-              // useEffect,
-               useState} from "react";
+  // useEffect,
+  useState
+} from "react";
+
 // import { useNavigate } from "react-router-dom"; // способ 2
-import { Heading } from "../components/heading";
 // import { Button } from "../components/button";
+import { Heading } from "../components/heading";
 import { Input2 } from "../components/input2";
 import { LinkButton } from "../components/LinkButton";
 import { ProgressBar } from "../components/ProgressBar";
 
+
 const StepOne = () => {
   // const navigate=useNavigate() // способ 2
 
-  const [answerValue, setAnswerValue] = useState("")
-  const [answerError, setAnswerError] = useState(false)
+  const [answerValue, setAnswerValue] = useState("");
+  const [answerError, setAnswerError] = useState(false);
+  // console.log("answerValue1: ", answerValue);
+
+  localStorage.setItem('stepOneValue', JSON.stringify(answerValue))
+
 
   // useEffect(() => {
   //   if (!answerValue) {
@@ -31,34 +38,31 @@ const StepOne = () => {
 
   const validateName = () => {
     if (!answerValue) {
-      setAnswerError(true)
+      setAnswerError(true);
     } else {
-      setAnswerError(false)
+      setAnswerError(false);
     }
-  }
+  };
 
   const handleNameInput = (value) => {
-    setAnswerValue(value)
-    validateName()
-  }
+    setAnswerValue(value);
+    validateName();
+  };
 
   const clickHandler = () => {
-    validateName()
+    validateName();
     // goToNextPage() // способ 2
-  }
+  };
+
 
   return (
     <div className="container">
       <div className="wrapper">
         <div className="single-input-quiz">
-          <ProgressBar currentStep={1}/>
+          <ProgressBar currentStep={1} />
 
           <div className="question">
-
-            <Heading 
-              text = "1. Занимательный вопрос"
-              HeadingType = "h2"
-            />
+            <Heading text="1. Занимательный вопрос" HeadingType="h2" />
 
             {/* <label className="input-wrapper">
               <input
@@ -91,15 +95,14 @@ const StepOne = () => {
               onClick={clickHandler}
             /> */}
 
-            <LinkButton
-              path="/step-two"
-              // isDisabled={false}
-              isDisabled={!answerValue}
-              type="button"
-              buttonText="Далее"
-              onClick={clickHandler}
-            />
-
+              <LinkButton
+                path="/step-two"
+                // isDisabled={false}
+                isDisabled={!answerValue}
+                type="button"
+                buttonText="Далее"
+                onClick={clickHandler}
+              />
           </div>
         </div>
       </div>

@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { 
+  // useEffect,
+  useState } from "react";
+  
 import { ProgressBar } from "../components/ProgressBar";
 import { AnswerItem2 } from "../components/AnswerItem2";
 import { Heading } from "../components/heading";
@@ -6,7 +9,9 @@ import { LinkButton } from "../components/LinkButton";
 
 const StepThree = () => {
   const [checkedAnswer, setCheckedAnswer] = useState(null)
-  console.log("useState: ", checkedAnswer)
+  // console.log("checkedAnswer3: ", checkedAnswer)
+
+  localStorage.setItem('stepThreeValue', JSON.stringify(checkedAnswer))
 
   const variants = [
     { id: "variant-1",
@@ -35,9 +40,9 @@ const StepThree = () => {
     },
   ]
 
-  useEffect(() => {
-    console.log("useEffect: ", checkedAnswer)
-  }, [checkedAnswer])
+  // useEffect(() => {
+  //   console.log("useEffect: ", checkedAnswer)
+  // }, [checkedAnswer])
 
   return (
     <div className="container">

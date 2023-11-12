@@ -3,6 +3,7 @@ import React, {
   useState,
   useContext
 } from "react";
+
 import { useNavigate } from "react-router-dom";
 import { Heading } from "../components/heading";
 import { Button } from "../components/button";
@@ -17,6 +18,12 @@ const Welcome = () => {
   const [phoneValue, setPhoneValue] = useState("");
   const [nameError, setNameError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
+  // console.log("nameValue: ", nameValue)
+  // console.log("phoneValue: ", phoneValue)
+
+  localStorage.setItem('stepNameValue', JSON.stringify(nameValue))
+  localStorage.setItem('stepPhoneValue', JSON.stringify(phoneValue))
+  
 
   const { theme, toggleTheme } = useContext(ThemeContext)
 

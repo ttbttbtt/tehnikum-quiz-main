@@ -2,7 +2,8 @@ import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { ThemeContext, themes } from "./themeContext";
 
 export const ThemeProvider = ({ children }) => {
-  const [themeValue, setThemeValue] = useState(themes.light);
+  const [themeValue, setThemeValue] = useState(themes.light); // themes.light - нач.тема
+
 
   useEffect(() => {
     const persistedTheme = JSON.parse(localStorage.getItem("currentTheme"));
@@ -12,9 +13,11 @@ export const ThemeProvider = ({ children }) => {
     }
   }, [themeValue]);
 
+
   const toggleTheme = useCallback(() => {
     setThemeValue((prevValue) => (prevValue === themes.dark ? themes.light : themes.dark));
   }, []);
+
 
   const contextValue = useMemo(() => {
     return {
@@ -22,6 +25,7 @@ export const ThemeProvider = ({ children }) => {
       toggleTheme,
     };
   }, [themeValue, toggleTheme]);
+
 
   return (
     <ThemeContext.Provider value={contextValue}>
