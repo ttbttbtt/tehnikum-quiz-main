@@ -79,8 +79,10 @@ const StepThree = () => {
                   key={elem.id}
                   id={elem.id}
                   answerLabel={elem.answerLabel}
-                  onChange={() => setCheckedAnswer(elem.id)}
-                  isChecked={elem.id === checkedAnswer}
+                  // onChange={() => setCheckedAnswer(elem.id)}
+                  // isChecked={elem.id === checkedAnswer}
+                  onChange={() => setCheckedAnswer(elem.pn)}
+                  isChecked={elem.pn === checkedAnswer}
                   src={elem.src}
                   alt={elem.alt}
                   pn={elem.pn}

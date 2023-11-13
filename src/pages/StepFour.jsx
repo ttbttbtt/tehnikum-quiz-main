@@ -64,8 +64,10 @@ const StepFour = () => {
                   key={elem.id}
                   id={elem.id}
                   answerLabel={elem.answerLabel}
-                  onChange={() => setCheckedAnswer(elem.id)}
-                  isChecked={elem.id === checkedAnswer}
+                  // onChange={() => setCheckedAnswer(elem.id)}
+                  // isChecked={elem.id === checkedAnswer}
+                  onChange={() => setCheckedAnswer(elem.answerLabel)}
+                  isChecked={elem.answerLabel === checkedAnswer}
                 />
               ))}
 
